@@ -1,24 +1,23 @@
-import mongoose from "mongoose";
+// Importing mongoose library
+const mongoose = require("mongoose");
 
-// Define a mongoose schema for users.
-const userSchema = new mongoose.Schema({
-  username: {
+// Defining the subTodo schema
+const subTodoSchema = new mongoose.Schema({
+  content: {
     type: String,
-    required: true,
-    unique: true,
-    lowercase: true,
+    required: true
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
+  complete: {
+    type: Boolean,
+    default: false
   },
-  password: {
-    type: String,
-    required: [true, "Password is required."],
-  },
-  timestamps: true
-});
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId, // Assuming createdBy refers to a user ID
+    ref: 'User'
+  }
+}, { timestamps: true });
 
-// Create a model named "User" based on the userSchema.
-export const User = mongoose.model("User", userSchema);
+// Creating the Subtodo model
+const Subtodo = mongoose.model("Subtodo", subTodoSchema);
+
+module.exports = Subtodo;
