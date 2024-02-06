@@ -1,7 +1,8 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-// Define the schema for medical records
-const medicalRecordsSchema = new mongoose.Schema({}, { timestamps: true });
+const medicalRecordSchema = new mongoose.Schema({}, { timestamps: true });
 
-// Create and export the MedicalRecord model
-export const MedicalRecord = mongoose.model("MedicalRecord", medicalRecordsSchema);
+export const MedicalRecord = mongoose.model(
+  'MedicalRecord',
+  medicalRecordSchema
+);
